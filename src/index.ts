@@ -2,6 +2,10 @@ import express from 'express';
 import http from 'http';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
+import { authenticateUser } from './controllers/users';
+import userRoutes from './routes/users';
+import eventsRouter from './routes/events';
+import cors from 'cors'
 
 dotenv.config();
 const router = express();
@@ -18,6 +22,16 @@ mongoose
     .catch(e=>console.log("error :", e));
 
 function onConnect():void {
+
+    router.use(cors())
+    router.get('/ping', (req, res, next) => res.status(200).json({message : "ping"}))
+
+    //check user and authenticate the user
+    router.use(authenticateUser);
+
+    // add new routes here
+    router.use("/users", userRoutes);
+    router.use("/events", eventsRouter);
 
     router.use((req, res, next) => {
         console.error("invalid query by : ", req.ip);
