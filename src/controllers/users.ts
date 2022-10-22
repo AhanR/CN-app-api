@@ -26,7 +26,7 @@ export const addUser = async (req : Request, res : Response, next : NextFunction
         userName : req.body.userName,
         userId : new mongoose.Types.ObjectId(),
         userDomain : req.body.userDomain,
-        userKey : uuid.v4()
+        userKey : "hello world"
     })
 
     try{
