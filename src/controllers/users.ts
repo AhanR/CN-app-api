@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import mongoose from "mongoose";
 import { errorMessage } from "../templateResponses/error";
 import users from "../models/users";
-import uuid from 'uuid'
+import cuid from "cuid";
 
 export const authenticateUser = async (req : Request, res : Response, next : NextFunction) => {
     try {
@@ -26,7 +26,7 @@ export const addUser = async (req : Request, res : Response, next : NextFunction
         userName : req.body.userName,
         userId : new mongoose.Types.ObjectId(),
         userDomain : req.body.userDomain,
-        userKey : "hello world"
+        userKey : cuid()
     })
 
     try{
