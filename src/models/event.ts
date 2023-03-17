@@ -10,7 +10,7 @@ const eventSchema : Schema = new Schema({
             signee : {type : mongoose.SchemaTypes.ObjectId, ref : "users"}
         }
     ],
-    eventId : {type : String},
+    eventId : {type : String, require : true},
     eventDomain : {type : mongoose.SchemaTypes.ObjectId, ref : "domains"},
     eventAuthor : {type : mongoose.SchemaTypes.ObjectId, ref : "users"}
 })

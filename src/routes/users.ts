@@ -3,6 +3,6 @@ import { addUser, searchByDomain } from "../controllers/users";
 const userRoutes = express();
 
 userRoutes.post('/add', addUser);
-userRoutes.get('/inDomain::domain', searchByDomain)
+userRoutes.get('/indomain::domain', searchByDomain)
 
 export default userRoutes;

@@ -4,5 +4,6 @@ const eventsRouter = express();
 
 eventsRouter.post("/add", addEvent);
 eventsRouter.get("/all", allEvents);
+// eventsRouter.get("/attendance::id",addAttendance);
 
 export default eventsRouter;
